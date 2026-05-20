@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园非遗节·传统合香手作体验</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', 'SimSun', serif;
+            background: linear-gradient(180deg, #f5f2eb 0%, #e8e4d9 100%);
+            min-height: 100vh;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(87, 65, 45, 0.95);
+            padding: 1rem 5%;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-bar a {
+            color: #f5f2eb;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-bar a:hover {
+            color: #d4af37;
+        }
+
+        section {
+            padding: 4rem 5%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #home {
+            background: linear-gradient(rgba(87, 65, 45, 0.1), rgba(87, 65, 45, 0.05)), 
+                        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-blend-mode: overlay;
+            text-align: center;
+            padding-top: 8rem;
+            padding-left: 140px;
+        }
+
+        #home h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #57412d;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #home .subtitle {
+            font-size: 1.2rem;
+            color: #7a5d40;
+            margin-bottom: 2rem;
+        }
+
+        #home .intro {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            color: #000;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #8b4513 0%, #654321 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            width: auto;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #8b4513;
+            color: #8b4513;
+        }
+
+        .btn-outline:hover {
+            background: #8b4513;
+            color: #fff;
+        }
+
+        #intro {
+            background: #faf8f3;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #57412d;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, #8b4513);
+            border-radius: 2px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e8e4d9;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            color: #57412d;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 80px;
+            left: 50px;
+            z-index: 100;
+        }
+
+        .logo {
+            width: 180px;
+            height: auto;
+            background: transparent;
+        }
+
+        #spices {
+            background: #f5f2eb;
+        }
+
+        .spices-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .spice-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: transform 0.3s;
+        }
+
+        .spice-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .spice-image {
+            height: 150px;
+            background: linear-gradient(135deg, #e8e4d9 0%, #d4cfc4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .spice-image .overlay {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.9);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #57412d;
+        }
+
+        .interactive-workspace {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f5f2eb 0%, #ebe6dc 100%);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mortar {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .mortar-bowl {
+            width: 240px;
+            height: 160px;
+            background: linear-gradient(180deg, #8b7355 0%, #6b5344 100%);
+            border-radius: 0 0 120px 120px;
+            position: relative;
+            box-shadow: inset 0 20px 40px rgba(0,0,0,0.3), 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .mortar-powder {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            right: 20px;
+            height: 60px;
+            background: linear-gradient(180deg, #c4a35a 0%, #a88b3d 100%);
+            border-radius: 0 0 100px 100px;
+            transition: height 0.3s, opacity 0.3s;
+        }
+
+        .mortar-pestle {
+            position: absolute;
+            right: -40px;
+            top: -100px;
+            transform-origin: top center;
+            cursor: pointer;
+            transition: transform 0.2s;
+            z-index: 10;
+            padding: 20px;
+        }
+
+        .mortar-pestle:hover {
+            transform: rotate(-10deg);
+        }
+
+        .mortar-pestle.grinding {
+            animation: grind 0.3s ease-in-out infinite;
+        }
+
+        @keyframes grind {
+            0%, 100% { transform: rotate(-15deg); }
+            50% { transform: rotate(15deg); }
+        }
+
+        .pestle-handle {
+            width: 16px;
+            height: 65px;
+            background: linear-gradient(90deg, #5d4e37 0%, #8b7355 50%, #5d4e37 100%);
+            border-radius: 8px 8px 0 0;
+            margin: 0 auto;
+        }
+
+        .pestle-head {
+            width: 40px;
+            height: 35px;
+            background: linear-gradient(180deg, #8b7355 0%, #6b5344 100%);
+            border-radius: 50%;
+            margin-top: -8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .bowl-with-dough {
+            display: inline-block;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .bowl {
+            width: 280px;
+            height: 120px;
+            background: linear-gradient(180deg, #e8dcc8 0%, #c9b896 100%);
+            border-radius: 0 0 140px 140px;
+            position: relative;
+            box-shadow: inset 0 10px 25px rgba(0,0,0,0.1), 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .dough {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: transform 0.3s, width 0.3s, height 0.3s;
+            cursor: pointer;
+        }
+
+        .dough.kneading {
+            animation: knead 0.4s ease-in-out infinite;
+        }
+
+        @keyframes knead {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            25% { transform: translateX(-55%) scale(0.9, 1.1); }
+            50% { transform: translateX(-50%) scale(1.1, 0.9); }
+            75% { transform: translateX(-45%) scale(0.9, 1.1); }
+        }
+
+        .mold-press {
+            display: inline-block;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .mold-base {
+            width: 180px;
+            height: 130px;
+            background: linear-gradient(180deg, #57412d 0%, #3d2f22 100%);
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .mold-shape {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 65px;
+            background: #e8dcc8;
+            border-radius: 50%;
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .press-handle {
+            width: 80px;
+            height: 90px;
+            background: linear-gradient(90deg, #5d4e37 0%, #8b7355 50%, #5d4e37 100%);
+            border-radius: 12px 12px 0 0;
+            margin: 0 auto;
+            position: relative;
+            top: -10px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .mold-press:hover .press-handle {
+            transform: translateY(8px);
+        }
+
+        .mold-press.pressing .press-handle {
+            animation: press 0.3s ease-in-out;
+        }
+
+        @keyframes press {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(35px); }
+        }
+
+        .drying-rack {
+            display: inline-block;
+            position: relative;
+        }
+
+        .rack {
+            width: 120px;
+            height: 8px;
+            background: linear-gradient(90deg, #5d4e37 0%, #8b7355 50%, #5d4e37 100%);
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .finished-item {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: dry 2s ease-in-out infinite;
+        }
+
+        @keyframes dry {
+            0%, 100% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, calc(-50% - 10px)); }
+        }
+
+        .drying-rack {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sun-icon {
+            position: absolute;
+            top: 10px;
+            right: 50px;
+            opacity: 0.8;
+            animation: sunGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes sunGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(244, 208, 63, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(244, 208, 63, 0.8)); }
+        }
+
+        .drying-mat {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #f5f0e6 0%, #e8e0d0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 3px 12px rgba(0,0,0,0.1), 0 6px 18px rgba(0,0,0,0.1);
+            border: 3px solid #d4c4a8;
+        }
+
+        .finished-item {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            border-radius: 50%;
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
+            animation: dryFloat 3s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        @keyframes dryFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(2deg); }
+            50% { transform: translateY(-3px) rotate(0deg); }
+            75% { transform: translateY(-8px) rotate(-2deg); }
+        }
+
+        .wind-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .wind-line {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(180, 170, 150, 0.6), transparent);
+            border-radius: 2px;
+        }
+
+        .wind-line-1 {
+            top: 80px;
+            left: 10%;
+            width: 80px;
+            animation: windLine1 2s ease-in-out infinite;
+        }
+
+        .wind-line-2 {
+            top: 120px;
+            left: 5%;
+            width: 60px;
+            animation: windLine2 2.5s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        .wind-line-3 {
+            top: 160px;
+            left: 15%;
+            width: 70px;
+            animation: windLine3 2.2s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        @keyframes windLine1 {
+            0% { opacity: 0; transform: translateX(-20px); }
+            30% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; transform: translateX(100px); }
+        }
+
+        @keyframes windLine2 {
+            0% { opacity: 0; transform: translateX(-20px); }
+            30% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; transform: translateX(120px); }
+        }
+
+        @keyframes windLine3 {
+            0% { opacity: 0; transform: translateX(-20px); }
+            30% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; transform: translateX(90px); }
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 16px;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        .sparkle-1 {
+            top: 40px;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .sparkle-2 {
+            top: 100px;
+            right: 25%;
+            animation-delay: 0.7s;
+        }
+
+        .sparkle-3 {
+            bottom: 40px;
+            left: 30%;
+            animation-delay: 1.4s;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .action-hint {
+            margin-top: 1rem;
+            color: #57412d;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .spice-info {
+            padding: 1.5rem;
+        }
+
+        .spice-name {
+            font-size: 1.2rem;
+            color: #57412d;
+            margin-bottom: 0.5rem;
+        }
+
+        .spice-scent {
+            font-size: 0.9rem;
+            color: #8b4513;
+            margin-bottom: 0.75rem;
+        }
+
+        .spice-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .spice-amount {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .spice-controls {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .spice-controls input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .add-btn {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-btn:hover {
+            transform: scale(1.05);
+        }
+
+        #game {
+            background: #faf8f3;
+        }
+
+        .game-container {
+            display: flex;
+            gap: 1.2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .game-panel {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .game-panel.left-panel {
+            flex: 3;
+            max-height: auto;
+        }
+
+        .game-panel.right-panel {
+            flex: 1;
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+
+        .panel-title {
+            font-size: 1.3rem;
+            color: #57412d;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .workshop-select {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .workshop-option {
+            flex: 1;
+            padding: 1.5rem;
+            background: #f5f2eb;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .workshop-option.selected {
+            border-color: #d4af37;
+            background: #fff9e6;
+        }
+
+        .workshop-option:hover {
+            transform: translateY(-3px);
+        }
+
+        .workshop-option .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .workshop-option .name {
+            font-size: 1.1rem;
+            color: #57412d;
+        }
+
+        .workshop-option .desc {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .bowl-container {
+            background: linear-gradient(135deg, #e8dcc8 0%, #d4c4a8 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            min-height: 300px;
+        }
+
+        .bowl-title {
+            font-size: 1.2rem;
+            color: #57412d;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .bowl-content {
+            background: rgba(255,255,255,0.8);
+            border-radius: 12px;
+            padding: 1rem;
+            min-height: 150px;
+        }
+
+        .bowl-empty {
+            text-align: center;
+            color: #999;
+            padding: 2rem;
+        }
+
+        .spice-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .spice-item:last-child {
+            border-bottom: none;
+        }
+
+        .spice-item-name {
+            color: #57412d;
+        }
+
+        .spice-item-weight {
+            color: #8b4513;
+            font-weight: bold;
+        }
+
+        .remove-btn {
+            background: #ff6b6b;
+            color: #fff;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .remove-btn:hover {
+            background: #ee5a5a;
+        }
+
+        .bowl-summary {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 2px solid #d4af37;
+            padding-left: 1rem;
+        }
+
+        .total-weight {
+            font-size: 1.2rem;
+            color: #57412d;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .scent-tendency {
+            font-size: 1rem;
+            color: #8b4513;
+        }
+
+        .notifications {
+            display: none;
+        }
+
+        .notification {
+            display: none;
+        }
+
+        .game-actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+
+        .game-actions .btn {
+            font-size: 0.95rem;
+            padding: 0.7rem 1.5rem;
+        }
+
+        #mold-section {
+            display: none;
+        }
+
+        .mold-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .mold-card {
+            background: #f5f2eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .mold-card.selected {
+            border-color: #d4af37;
+            background: #fff9e6;
+        }
+
+        .mold-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .mold-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .mold-name {
+            font-size: 1.1rem;
+            color: #57412d;
+            margin-bottom: 0.5rem;
+        }
+
+        .mold-desc {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        #process-section {
+            display: none;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .process-step {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            opacity: 0.5;
+            transition: all 0.5s;
+        }
+
+        .process-step.active {
+            opacity: 1;
+            background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .process-step.completed {
+            opacity: 1;
+            background: #d4edda;
+        }
+
+        .process-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-name {
+            font-size: 1rem;
+            color: #57412d;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-desc {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        #result-section {
+            display: none;
+        }
+
+        .result-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #d4af37, #8b4513, #d4af37);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .result-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .result-image-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .result-image {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .result-info-section {
+            flex: 1;
+            text-align: left;
+        }
+
+        .result-title {
+            font-size: 1.8rem;
+            color: #57412d;
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .result-name {
+            font-size: 1.6rem;
+            color: #8b4513;
+            margin-bottom: 0.8rem;
+        }
+
+        .result-mold {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.2rem;
+        }
+
+        .result-spices {
+            background: #f5f2eb;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .result-spices-title {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-spices-list {
+            font-size: 0.9rem;
+            color: #57412d;
+        }
+
+        .result-weight {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.2rem;
+        }
+
+        .result-scent {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .result-desc {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-quote {
+            background: #f5f2eb;
+            border-left: 4px solid #d4af37;
+            padding: 0.8rem 1.2rem;
+            margin-bottom: 1.5rem;
+            margin-left: auto;
+            margin-right: auto;
+            font-style: italic;
+            color: #57412d;
+            font-size: 0.95rem;
+            text-align: center;
+            max-width: 100%;
+        }
+
+        #reference-section {
+            display: none;
+            margin-top: 2rem;
+            flex-direction: row;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .reference-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1rem;
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .reference-name {
+            font-size: 1.1rem;
+            color: #57412d;
+            margin-bottom: 0.5rem;
+        }
+
+        .reference-spices {
+            font-size: 0.9rem;
+            color: #8b4513;
+            margin-bottom: 0.5rem;
+        }
+
+        .reference-desc {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        #on-site {
+            background: linear-gradient(rgba(87, 65, 45, 0.9), rgba(87, 65, 45, 0.85));
+            color: #fff;
+            text-align: center;
+        }
+
+        #on-site .section-title {
+            color: #f5f2eb;
+        }
+
+        #on-site .section-title::after {
+            background: linear-gradient(90deg, #f5f2eb, #d4af37);
+        }
+
+        #on-site p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #e8e4d9;
+        }
+
+        #on-site .btn {
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+        }
+
+        #on-site .btn:hover {
+            background: linear-gradient(135deg, #e6c945 0%, #d4af37 100%);
+        }
+
+        footer {
+            background: #57412d;
+            color: #d4c4a8;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-close:hover {
+            color: #555;
+        }
+
+        .modal-spice-name {
+            font-size: 1.5rem;
+            color: #57412d;
+            margin-bottom: 1rem;
+        }
+
+        .modal-spice-scent {
+            font-size: 1rem;
+            color: #8b4513;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-spice-desc {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .modal-spice-tip {
+            background: #fff9e6;
+            padding: 1rem;
+            border-radius: 8px;
+            color: #856404;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-bar a {
+                margin: 0 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .game-container {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mold-options {
+                grid-template-columns: 1fr;
+            }
+
+            #home h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="#home">首页</a>
+        <a href="#intro">认识合香</a>
+        <a href="#game">开始制作</a>
+        <a href="#on-site">现场体验</a>
+    </nav>
+
+    <section id="home">
+        <div class="logo-container">
+            <img src="logo.png" alt="logo" class="logo">
+        </div>
+        <h1>校园非遗节·传统合香手作体验</h1>
+        <p class="subtitle">认识香料，调配香方，压制一枚属于自己的合香作品</p>
+        <p class="intro">合香，是将多种天然香料按照香气、功效与比例进行调和的传统技艺。古人焚香、佩香、制香牌，不只为了香气，也寄托着雅致生活与匠心精神。在本次校园非遗节中，你将通过小游戏学习合香知识，并在现场体验真实的香丸/香牌制作。</p>
+        <span style="display: inline-block; text-align: center;">
+            <button class="btn" onclick="scrollToSection('intro')" style="padding: 0.8rem 2rem; width: fit-content; min-width: auto; max-width: none; display: inline-flex; align-items: center; justify-content: center; box-sizing: content-box;">了解合香文化</button>
+        </span>
+    </section>
+
+    <section id="intro">
+        <h2 class="section-title">什么是合香？</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>合香技艺</h3>
+                <p>合香，是将沉香、檀香、藿香、甘松、龙脑等香料按照一定比例调和，再加入炼蜜、米糊等黏合材料，制成香丸、香牌、香饼或印香的传统技艺。</p>
+            </div>
+            <div class="card">
+                <h3>合香步骤</h3>
+                <p>传统合香通常包括选材、研粉、配比、调和、成型、阴干等步骤。不同香料的气味、层次和用量，会影响最终作品的香气。</p>
+            </div>
+            <div class="card">
+                <h3>本次体验</h3>
+                <p>在本次活动中，玩家将先在网页中模拟配香，了解不同香料的特点；完成学习后，可在现场使用香材、模具和工具，制作属于自己的香丸或香牌。</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <button class="btn" onclick="scrollToSection('game')">开始制作我的合香</button>
+        </div>
+    </section>
+
+    <section id="game">
+        <h2 class="section-title">我的合香工坊</h2>
+        <div class="game-container">
+            <div class="game-panel left-panel">
+                <div class="panel-title">选择制作目标</div>
+                <div class="workshop-select">
+                    <div class="workshop-option selected" onclick="selectWorkshop('香丸')">
+                        <div class="name">香丸</div>
+                        <div class="desc">小巧圆润，适合随身佩戴或静置闻香</div>
+                    </div>
+                    <div class="workshop-option" onclick="selectWorkshop('香牌')">
+                        <div class="name">香牌</div>
+                        <div class="desc">可压出图案，适合校园活动纪念</div>
+                    </div>
+                </div>
+
+                <div class="panel-title">选择香料</div>
+                <button class="btn" onclick="toggleReference()" style="width: auto; margin-bottom: 1.5rem; background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%); display: flex; align-items: center; gap: 0.5rem; cursor: pointer; justify-content: flex-start;">点击查看传统香方参考 ▼</button>
+                
+                <div id="reference-section">
+                    <div class="reference-card">
+                        <div class="reference-name">🌙 温润书香方</div>
+                        <div class="reference-spices">檀香、沉香、零陵香、炼蜜</div>
+                        <div class="reference-desc">适合喜欢温润木质香的玩家，香气沉稳、雅致，适合阅读时使用</div>
+                    </div>
+                    <div class="reference-card">
+                        <div class="reference-name">🌿 草木清和方</div>
+                        <div class="reference-spices">檀香、藿香、甘松、茅香、炼蜜</div>
+                        <div class="reference-desc">适合喜欢草本清新感的玩家，香气清新、自然，有净室感</div>
+                    </div>
+                    <div class="reference-card">
+                        <div class="reference-name">❄️ 清凉醒神方</div>
+                        <div class="reference-spices">檀香、沉香、龙脑、炼蜜</div>
+                        <div class="reference-desc">适合喜欢清凉香气的玩家，香气清凉、通透，提神醒脑</div>
+                    </div>
+                </div>
+
+                <div class="spices-grid" id="game-spices-grid">
+                </div>
+            </div>
+
+            <div class="game-panel right-panel">
+                <div class="panel-title">我的电子香碗</div>
+                <div class="bowl-container">
+                    <div class="bowl-title">电子香碗</div>
+                    <div class="bowl-content" id="bowl-content">
+                        <div class="bowl-empty">点击香料卡片查看详情，输入克数后加入香碗</div>
+                    </div>
+                    <div class="bowl-summary">
+                        <div class="total-weight">总重量：<span id="total-weight">0</span>g</div>
+                        <div class="scent-tendency">香气倾向：<span id="scent-tendency">待调配</span></div>
+                    </div>
+                </div>
+
+                <div class="notifications" id="notifications">
+                </div>
+
+                <div class="game-actions">
+                    <button class="btn" onclick="clearBowl()">清空香碗</button>
+                    <button class="btn" onclick="checkAndNext()" id="next-btn">开始合香</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mold-section" class="game-container" style="display: none;">
+            <div class="game-panel" style="grid-column: 1/-1;">
+                <div class="panel-title">选择模具</div>
+                <div class="mold-options">
+                    <div class="mold-card selected" onclick="selectMold('圆形香丸')">
+                        <div class="mold-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#57412d" stroke-width="2" fill="#e8dcc8"/></svg></div>
+                        <div class="mold-name">圆形香丸</div>
+                        <div class="mold-desc">圆润小巧，适合制作传统香丸</div>
+                    </div>
+                    <div class="mold-card" onclick="selectMold('花形香牌')">
+                <div class="mold-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#57412d" stroke-width="2" fill="#e8dcc8"/><ellipse cx="24" cy="10" rx="8" ry="10" stroke="#57412d" stroke-width="2" fill="#e8dcc8"/><ellipse cx="38" cy="24" rx="10" ry="8" stroke="#57412d" stroke-width="2" fill="#e8dcc8"/><ellipse cx="24" cy="38" rx="8" ry="10" stroke="#57412d" stroke-width="2" fill="#e8dcc8"/><ellipse cx="10" cy="24" rx="10" ry="8" stroke="#57412d" stroke-width="2" fill="#e8dcc8"/><circle cx="24" cy="24" r="6" stroke="#57412d" stroke-width="2" fill="#e8dcc8"/></svg></div>
+                <div class="mold-name">花形香牌</div>
+                <div class="mold-desc">造型雅致，适合做成纪念香牌</div>
+            </div>
+                    <div class="mold-card" onclick="selectMold('云纹香牌')">
+                        <div class="mold-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 36 C12 36 8 28 12 22 C8 18 12 12 20 14 C24 10 32 10 36 14 C44 12 48 18 44 22 C48 28 44 36 32 36 C28 38 20 38 16 36 C16 36 20 38 24 36 Z" stroke="#57412d" stroke-width="2" fill="#e8dcc8"/></svg></div>
+                        <div class="mold-name">云纹香牌</div>
+                        <div class="mold-desc">纹样古典，体现传统美感</div>
+                    </div>
+                </div>
+                <div class="game-actions" style="margin-top: 2rem; justify-content: center;">
+                    <button class="btn" onclick="startProcess()">开始制作</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="process-section" class="game-container" style="display: none;">
+            <div class="game-panel" style="grid-column: 1/-1;">
+                <div class="panel-title">合香制作中...</div>
+                
+                <div class="interactive-workspace" id="workspace">
+                    <div class="mortar-container" id="mortar-container">
+                        <div class="mortar">
+                            <div class="mortar-bowl">
+                                <div class="mortar-powder" id="mortar-powder"></div>
+                                <div class="mortar-pestle" id="mortar-pestle" onclick="grindSpices()">
+                                    <div class="pestle-handle"></div>
+                                    <div class="pestle-head"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-hint" id="grind-hint">点击研杵研磨香料</div>
+                    </div>
+                    
+                    <div class="knead-container" id="knead-container" style="display: none;">
+                        <div class="bowl-with-dough" id="bowl-with-dough" onclick="kneadDough()">
+                            <div class="bowl"></div>
+                            <div class="dough" id="dough"></div>
+                        </div>
+                        <div class="action-hint" id="knead-hint">点击香泥揉搓成团</div>
+                    </div>
+                    
+                    <div class="press-container" id="press-container" style="display: none;">
+                        <div class="mold-press" id="mold-press" onclick="pressMold()">
+                            <div class="mold-base">
+                                <div class="mold-shape" id="mold-shape"></div>
+                            </div>
+                            <div class="press-handle"></div>
+                        </div>
+                        <div class="action-hint" id="press-hint">点击压制</div>
+                    </div>
+                    
+                    <div class="dry-container" id="dry-container" style="display: none;">
+                        <div class="drying-rack" id="drying-rack">
+                            <div class="sun-icon">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="#f4d03f">
+                                    <circle cx="30" cy="30" r="15" fill="#f4d03f"/>
+                                    <g stroke="#f4d03f" stroke-width="3" stroke-linecap="round">
+                                        <line x1="30" y1="5" x2="30" y2="12"/>
+                                        <line x1="30" y1="48" x2="30" y2="55"/>
+                                        <line x1="5" y1="30" x2="12" y2="30"/>
+                                        <line x1="48" y1="30" x2="55" y2="30"/>
+                                        <line x1="14" y1="14" x2="19" y2="19"/>
+                                        <line x1="41" y1="41" x2="46" y2="46"/>
+                                        <line x1="46" y1="14" x2="41" y2="19"/>
+                                        <line x1="19" y1="41" x2="14" y2="46"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="drying-mat">
+                                <div class="finished-item" id="finished-item"></div>
+                            </div>
+                            <div class="wind-lines">
+                                <div class="wind-line wind-line-1"></div>
+                                <div class="wind-line wind-line-2"></div>
+                                <div class="wind-line wind-line-3"></div>
+                            </div>
+                            <div class="sparkles">
+                                <div class="sparkle sparkle-1">✨</div>
+                                <div class="sparkle sparkle-2">✨</div>
+                                <div class="sparkle sparkle-3">✨</div>
+                            </div>
+                        </div>
+                        <div class="action-hint" style="font-size: 1.2rem; color: #57412d;">作品正在阴凉处晾干...</div>
+                    </div>
+                </div>
+                
+                <div class="process-steps">
+                    <div class="process-step active" id="step-1">
+                        <div class="process-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#57412d" stroke-width="2"/><path d="M16 24 L24 16 L32 24 L24 32 Z" stroke="#57412d" stroke-width="2"/></svg></div>
+                        <div class="process-name">研粉</div>
+                        <div class="process-desc">将香料研磨成细腻香粉</div>
+                    </div>
+                    <div class="process-step" id="step-2">
+                        <div class="process-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="30" rx="16" ry="8" stroke="#57412d" stroke-width="2"/><path d="M8 30 L8 20 Q24 10 40 20 L40 30" stroke="#57412d" stroke-width="2"/></svg></div>
+                        <div class="process-name">调和</div>
+                        <div class="process-desc">加入炼蜜或米糊，使香粉成团</div>
+                    </div>
+                    <div class="process-step" id="step-3">
+                        <div class="process-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="12" y="20" width="24" height="12" rx="2" stroke="#57412d" stroke-width="2"/><path d="M18 20 L18 8 L30 8 L30 20" stroke="#57412d" stroke-width="2"/></svg></div>
+                        <div class="process-name">压制</div>
+                        <div class="process-desc">把香泥放入模具，轻轻压实</div>
+                    </div>
+                    <div class="process-step" id="step-4">
+                        <div class="process-icon"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="20" r="10" stroke="#57412d" stroke-width="2"/><path d="M24 10 L24 4 M18 14 L14 10 M30 14 L34 10 M34 20 L40 20 M30 26 L34 30 M18 26 L14 30" stroke="#57412d" stroke-width="2"/></svg></div>
+                        <div class="process-name">晾干</div>
+                        <div class="process-desc">将作品放在阴凉处慢慢晾干</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-section">
+            <div class="result-card">
+                <div class="result-title">🎨 我的合香作品</div>
+                <div class="result-content">
+                    <div class="result-image-section">
+                        <img class="result-image" id="result-image" src="" alt="合香作品">
+                    </div>
+                    <div class="result-info-section">
+                        <div class="result-name" id="result-name"></div>
+                        <div class="result-mold" id="result-mold"></div>
+                        <div class="result-spices">
+                            <div class="result-spices-title">使用香料：</div>
+                            <div class="result-spices-list" id="result-spices"></div>
+                        </div>
+                        <div class="result-weight" id="result-weight"></div>
+                        <div class="result-scent" id="result-scent"></div>
+                        <div class="result-desc" id="result-desc"></div>
+                    </div>
+                </div>
+                <div class="result-quote" id="result-quote"></div>
+                <div class="game-actions" style="justify-content: center; margin-top: 2rem;">
+                    <button class="btn" onclick="restartGame()">重新制作</button>
+                    <button class="btn btn-outline" onclick="scrollToSection('on-site')">前往现场体验</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="on-site">
+        <h2 class="section-title">完成线上合香学习后，来现场亲手制作吧！</h2>
+        <p>在校园非遗节现场，我们将提供香材、模具和制作工具，并由指导老师带领大家完成真实合香体验。你可以根据网页中学习到的香料知识，选择喜欢的原材料，制作一枚属于自己的香丸或香牌。</p>
+    </section>
+
+    <footer>
+        <p>校园非遗节 · 传统合香手作体验</p>
+        <p>传承非遗文化，品味古韵清香</p>
+    </footer>
+
+    <div class="modal" id="spice-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-spice-name" id="modal-name"></div>
+            <div class="modal-spice-scent" id="modal-scent"></div>
+            <div class="modal-spice-desc" id="modal-desc"></div>
+            <div class="modal-spice-tip" id="modal-tip"></div>
+        </div>
+    </div>
+
+    <script>
+        const spices = [
+            { id: 1, name: '檀香粉', scent: '温润、木质、安静', desc: '檀香是常见合香基础香料，香气温和绵长，适合做主香。', amount: '10g–30g', attrs: ['木质', '温润'], tip: '檀香是合香中的基础香料，可以作为主香使用，让整个香方更加稳定柔和。' },
+            { id: 2, name: '沉香粉', scent: '醇厚、幽深、甜润', desc: '沉香气味层次丰富，常用于提升香方的厚度和高级感。', amount: '5g–20g', attrs: ['醇厚', '甜润'], tip: '沉香价格较高，使用时注意用量，能有效提升香方的层次感。' },
+            { id: 3, name: '零陵香粉', scent: '甜润、柔和、协调', desc: '零陵香可增加香气的柔和感，使配方更加圆润。', amount: '3g–15g', attrs: ['甜润', '柔和'], tip: '零陵香可以调和各种香料的气味，让整体香气更加和谐。' },
+            { id: 4, name: '藿香粉', scent: '草本、清新、辟秽', desc: '藿香带有明显草本气息，适合制作清新、净室风格的香方。', amount: '5g–15g', attrs: ['草本', '清新'], tip: '藿香有辟秽的作用，适合制作净化空气的香品。' },
+            { id: 5, name: '甘松粉', scent: '甘甜、草本、沉稳', desc: '甘松常用于增加草本甜香，使香气更柔和。', amount: '3g–10g', attrs: ['草本', '甘甜'], tip: '甘松的甜香可以中和其他香料的刺激性，让香气更柔和。' },
+            { id: 6, name: '茅香粉', scent: '清草、轻盈、自然', desc: '茅香气味清淡，可作为辅助香料，增加自然草木感。', amount: '2g–8g', attrs: ['清草', '自然'], tip: '茅香气味清淡，不宜过多，以免掩盖主香。' },
+            { id: 7, name: '丁香粉', scent: '辛香、浓烈、暖感', desc: '丁香香气较强，适合少量加入，用于提香。', amount: '0.5g–3g', attrs: ['辛香', '暖感'], tip: '丁香气味浓烈，用量一定要控制，过多会掩盖其他香气。' },
+            { id: 8, name: '龙脑粉/冰片', scent: '清凉、通透、醒神', desc: '龙脑气味清凉明显，用量不宜过多，适合作为点睛香料。', amount: '0.2g–2g', attrs: ['清凉', '提神'], tip: '龙脑清凉醒神，但用量不宜超过2g，否则气味过于强烈。' },
+            { id: 9, name: '崖柏粉/柏叶粉', scent: '木质、清芬、净化感', desc: '柏类香料气味清朗，适合制作香饼、香牌。', amount: '5g–20g', attrs: ['木质', '清芬'], tip: '柏叶香气清新，有净化空气的效果，适合制作香牌。' },
+            { id: 10, name: '炭末', scent: '助燃、稳定、无明显香气', desc: '炭末主要用于帮助香品燃烧，并不作为主要香气来源。', amount: '5g–15g', attrs: ['助燃'], tip: '炭末主要用于帮助燃烧，如果制作香丸或香牌可以不加。' },
+            { id: 11, name: '炼蜜', scent: '黏合、微甜、成型', desc: '炼蜜用于把香粉黏合成团，使香丸或香牌能够成型。', amount: '5g–10g', attrs: ['黏合'], tip: '炼蜜是制作香丸和香牌必备的黏合剂，用量约为香粉总量的15%-20%。' },
+            { id: 12, name: '米糊/淀粉', scent: '黏合、温和、辅助成型', desc: '可作为辅助黏合材料，使香粉更容易压制。', amount: '3g–8g', attrs: ['黏合'], tip: '米糊可以作为炼蜜的辅助黏合剂，尤其适合制作香牌。' }
+        ];
+
+        const scentNames = {
+            '木质': ['温润木质香', '你的配方以木质香料为主，香气温和沉稳，适合静心阅读和书房使用。'],
+            '草本': ['草本清新香', '你的配方草本气息明显，清新自然，适合营造洁净舒适的空间氛围。'],
+            '清凉': ['清凉醒神香', '你的配方加入了清凉香料，香气通透提神，适合需要清醒头脑的场合。'],
+            '辛香': ['辛香暖调香', '你的配方辛香气息较突出，整体更温暖浓烈，适合秋冬季节使用。']
+        };
+
+        const workNames = {
+            '温润木质香': ['静檀香牌', '沉檀雅香', '书斋清韵', '古韵留香', '木韵悠长'],
+            '草本清新香': ['青草净香', '清和香牌', '草木微风', '绿野芳踪', '清芬雅致'],
+            '清凉醒神香': ['龙脑清韵', '夏日醒香', '清心香丸', '清澄香气', '透爽清芬'],
+            '辛香暖调香': ['暖意香牌', '丁香小筑', '温香一枚', '暖韵悠长', '辛香雅韵']
+        };
+
+        const quotes = [
+            '一香一方寸，一制一匠心。',
+            '香之为用，其利最溥。物外高隐，坐语道德，焚之可以清心悦神。',
+            '焚香静坐，足以养性怡情。',
+            '香是灵魂的呼吸，是心境的表达。',
+            '合香如处世，调和中见真意。'
+        ];
+
+        let selectedWorkshop = '香丸';
+        let selectedMold = '圆形香丸';
+        let bowl = [];
+        let totalWeight = 0;
+
+        function renderSpicesGrid(containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = spices.map(spice => `
+                <div class="spice-card" draggable="true" ondragstart="dragStart(event, ${spice.id})">
+                    <div class="spice-image" onclick="openSpiceModal(${spice.id})">
+                        ${getSpiceEmoji(spice.id)}
+                        <div class="overlay">点击查看 / 拖拽添加</div>
+                    </div>
+                    <div class="spice-info">
+                        <div class="spice-name">${spice.name}</div>
+                        <div class="spice-scent">${spice.scent}</div>
+                        <div class="spice-desc">${spice.desc}</div>
+                        <div class="spice-amount">建议用量：${spice.amount}</div>
+                        <div class="spice-controls">
+                            <input type="number" min="0" step="1" placeholder="克数" id="input-${spice.id}" style="width: 80px;">
+                            <button class="add-btn" onclick="addToBowl(${spice.id})">加入香碗</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getSpiceEmoji(id) {
+            const spiceImages = [
+                '檀香粉.jpg',
+                '沉香粉.jpg',
+                '零陵香粉.jpg',
+                '藿香粉.jpg',
+                '甘松粉.jpg',
+                '茅香粉.jpg',
+                '丁香粉.jpg',
+                '龙脑粉.jpg',
+                '柏叶粉.jpg',
+                '炭末.jpg',
+                '炼蜜.jpg',
+                '米糊.jpg'
+            ];
+            return `<img src="${spiceImages[id - 1]}" alt="香料图片" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px 8px 0 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">`;
+        }
+        
+        function adjustColor(color, amount) {
+            const hex = color.replace('#', '');
+            const r = Math.max(0, Math.min(255, parseInt(hex.substr(0, 2), 16) + amount));
+            const g = Math.max(0, Math.min(255, parseInt(hex.substr(2, 2), 16) + amount));
+            const b = Math.max(0, Math.min(255, parseInt(hex.substr(4, 2), 16) + amount));
+            return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+        }
+
+        function openSpiceModal(id) {
+            const spice = spices.find(s => s.id === id);
+            document.getElementById('modal-name').textContent = spice.name;
+            document.getElementById('modal-scent').textContent = '气味特点：' + spice.scent;
+            document.getElementById('modal-desc').textContent = spice.desc;
+            document.getElementById('modal-tip').textContent = '💡 小贴士：' + spice.tip;
+            document.getElementById('spice-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('spice-modal').style.display = 'none';
+        }
+
+        function addToBowl(id) {
+            const input = document.getElementById('input-' + id);
+            const amount = parseFloat(input.value);
+            
+            if (!amount || amount <= 0) {
+                showNotification('请输入有效的克数', 'warning');
+                return;
+            }
+
+            const spice = spices.find(s => s.id === id);
+            const existingIndex = bowl.findIndex(item => item.id === id);
+
+            if (existingIndex >= 0) {
+                bowl[existingIndex].amount += amount;
+            } else {
+                bowl.push({ id: spice.id, name: spice.name, amount: amount });
+            }
+
+            totalWeight += amount;
+            input.value = '';
+            updateBowl();
+            showNotification(`${spice.name} ${amount}g 已加入香碗`, 'success');
+        }
+
+        function updateBowl() {
+            const content = document.getElementById('bowl-content');
+            
+            if (bowl.length === 0) {
+                content.innerHTML = '<div class="bowl-empty">点击香料卡片查看详情，输入克数后加入香碗</div>';
+                document.getElementById('total-weight').textContent = '0';
+                document.getElementById('scent-tendency').textContent = '待调配';
+                return;
+            }
+
+            content.innerHTML = bowl.map((item, index) => `
+                <div class="spice-item">
+                    <span class="spice-item-name">${item.name}</span>
+                    <div>
+                        <span class="spice-item-weight">${item.amount}g</span>
+                        <button class="remove-btn" onclick="removeFromBowl(${index})">删除</button>
+                    </div>
+                </div>
+            `).join('');
+
+            document.getElementById('total-weight').textContent = totalWeight;
+            updateScentTendency();
+        }
+
+        function removeFromBowl(index) {
+            totalWeight -= bowl[index].amount;
+            bowl.splice(index, 1);
+            updateBowl();
+        }
+
+        function clearBowl() {
+            bowl = [];
+            totalWeight = 0;
+            updateBowl();
+            showNotification('香碗已清空', 'info');
+        }
+
+        function updateScentTendency() {
+            const attrCount = {};
+            const spicesMap = new Map(spices.map(s => [s.id, s]));
+            
+            bowl.forEach(item => {
+                const spice = spicesMap.get(item.id);
+                if (spice && spice.attrs) {
+                    spice.attrs.forEach(attr => {
+                        attrCount[attr] = (attrCount[attr] || 0) + item.amount;
+                    });
+                }
+            });
+
+            const sortedAttrs = Object.entries(attrCount).sort((a, b) => b[1] - a[1]);
+            
+            if (sortedAttrs.length === 0) {
+                document.getElementById('scent-tendency').textContent = '待调配';
+                return;
+            }
+
+            const mainAttr = sortedAttrs[0][0];
+            const tendencies = {
+                '木质': '木质温润',
+                '温润': '木质温润',
+                '醇厚': '木质温润',
+                '甜润': '木质温润',
+                '柔和': '草本清新',
+                '草本': '草本清新',
+                '清新': '草本清新',
+                '甘甜': '草本清新',
+                '清草': '草本清新',
+                '自然': '草本清新',
+                '清凉': '清凉提神',
+                '提神': '清凉提神',
+                '辛香': '辛香暖调',
+                '暖感': '辛香暖调',
+                '清芬': '木质温润',
+                '助燃': '',
+                '黏合': ''
+            };
+
+            const tendency = tendencies[mainAttr] || '待调配';
+            document.getElementById('scent-tendency').textContent = tendency;
+        }
+
+        function checkAndNext() {
+            const notifications = [];
+            let canProceed = true;
+
+            if (totalWeight < 20) {
+                notifications.push('你的香料还太少啦，可以继续加入一些基础香料。');
+                canProceed = false;
+            }
+
+            if (totalWeight > 60) {
+                notifications.push('你的香料有点多，真实制作时建议控制总量在60g以内。');
+            }
+
+            const hasBinder = bowl.some(item => item.name === '炼蜜' || item.name === '米糊/淀粉');
+            if (!hasBinder) {
+                notifications.push('还没有加入黏合材料哦。真实合香制作中，需要加入炼蜜或米糊帮助香粉成型。');
+            }
+
+            const dragonBrain = bowl.find(item => item.name === '龙脑粉/冰片');
+            if (dragonBrain && dragonBrain.amount > 2) {
+                notifications.push('龙脑气味清凉强烈，真实制作时不宜过量，建议不超过2g。');
+            }
+
+            const clove = bowl.find(item => item.name === '丁香粉');
+            if (clove && clove.amount > 3) {
+                notifications.push('丁香香气浓烈，少量就能起到提香作用，建议不超过3g。');
+            }
+
+            clearNotifications();
+            notifications.forEach(n => showNotification(n, canProceed ? 'info' : 'warning'));
+
+            if (!canProceed) return;
+
+            document.querySelector('.game-container').style.display = 'none';
+            document.getElementById('mold-section').style.display = 'grid';
+            
+            setTimeout(() => {
+                document.getElementById('mold-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+
+        function clearNotifications() {
+            document.getElementById('notifications').innerHTML = '';
+        }
+
+        function showNotification(message, type) {
+            const container = document.getElementById('notifications');
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            container.appendChild(notification);
+        }
+
+        function selectWorkshop(workshop) {
+            selectedWorkshop = workshop;
+            document.querySelectorAll('.workshop-option').forEach(el => el.classList.remove('selected'));
+            event.target.closest('.workshop-option').classList.add('selected');
+        }
+
+        function selectMold(mold) {
+            selectedMold = mold;
+            document.querySelectorAll('.mold-card').forEach(el => el.classList.remove('selected'));
+            event.target.closest('.mold-card').classList.add('selected');
+        }
+
+        function startProcess() {
+            document.getElementById('mold-section').style.display = 'none';
+            document.getElementById('process-section').style.display = 'grid';
+            
+            grindCount = 0;
+            kneadCount = 0;
+            
+            document.getElementById('mortar-container').style.display = 'block';
+            document.getElementById('knead-container').style.display = 'none';
+            document.getElementById('press-container').style.display = 'none';
+            document.getElementById('dry-container').style.display = 'none';
+            
+            document.querySelectorAll('.process-step').forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index === 0) step.classList.add('active');
+            });
+            
+            document.getElementById('grind-hint').textContent = '点击研杵研磨香料';
+            
+            setTimeout(() => {
+                document.getElementById('process-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+
+        function generateResult() {
+            const scentType = determineScentType();
+            const workName = workNames[scentType][Math.floor(Math.random() * workNames[scentType].length)];
+            const quote = quotes[Math.floor(Math.random() * quotes.length)];
+
+            // 根据选择的模具显示对应图片
+            let imageSrc = '';
+            if (selectedMold === '圆形香丸') {
+                imageSrc = '圆形香丸.png';
+            } else if (selectedMold === '花形香牌') {
+                imageSrc = '花形香牌.png';
+            } else if (selectedMold === '云纹香牌') {
+                imageSrc = '云纹香牌.png';
+            }
+            document.getElementById('result-image').src = imageSrc;
+            document.getElementById('result-image').alt = selectedMold;
+
+            document.getElementById('result-name').textContent = workName;
+            document.getElementById('result-mold').textContent = `作品类型：${selectedMold}`;
+            document.getElementById('result-spices').textContent = bowl.map(item => `${item.name}${item.amount}g`).join('、');
+            document.getElementById('result-weight').textContent = `总重量：${totalWeight}g`;
+            document.getElementById('result-scent').textContent = scentType;
+            document.getElementById('result-desc').textContent = scentNames[scentType]?.[1] || '你的合香作品已完成！';
+            document.getElementById('result-quote').textContent = quote;
+        }
+
+        function determineScentType() {
+            const attrCount = {};
+            
+            bowl.forEach(item => {
+                const spice = spices.find(s => s.id === item.id);
+                if (spice && spice.attrs) {
+                    spice.attrs.forEach(attr => {
+                        attrCount[attr] = (attrCount[attr] || 0) + item.amount;
+                    });
+                }
+            });
+
+            const sortedAttrs = Object.entries(attrCount).sort((a, b) => b[1] - a[1]);
+            
+            if (sortedAttrs.length === 0) return '温润木质香';
+
+            const mainAttr = sortedAttrs[0][0];
+            
+            if (['木质', '温润', '醇厚', '甜润', '清芬'].includes(mainAttr)) {
+                return '温润木质香';
+            } else if (['草本', '清新', '甘甜', '清草', '自然', '柔和'].includes(mainAttr)) {
+                return '草本清新香';
+            } else if (['清凉', '提神'].includes(mainAttr)) {
+                return '清凉醒神香';
+            } else if (['辛香', '暖感'].includes(mainAttr)) {
+                return '辛香暖调香';
+            }
+            
+            return '温润木质香';
+        }
+
+        function restartGame() {
+            bowl = [];
+            totalWeight = 0;
+            selectedWorkshop = '香丸';
+            selectedMold = '圆形香丸';
+            
+            document.getElementById('result-section').style.display = 'none';
+            document.getElementById('mold-section').style.display = 'none';
+            document.getElementById('process-section').style.display = 'none';
+            const gameContainer = document.querySelector('.game-container');
+            gameContainer.style.display = 'flex';
+            gameContainer.style.gridTemplateColumns = '';
+            
+            document.querySelectorAll('.workshop-option').forEach(el => el.classList.remove('selected'));
+            document.querySelector('.workshop-option').classList.add('selected');
+            document.querySelectorAll('.mold-card').forEach(el => el.classList.remove('selected'));
+            document.querySelector('.mold-card').classList.add('selected');
+            
+            document.querySelectorAll('input[type="number"]').forEach(input => input.value = '');
+            
+            updateBowl();
+            clearNotifications();
+            
+            setTimeout(() => {
+                document.getElementById('home').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function toggleReference() {
+            const section = document.getElementById('reference-section');
+            section.style.display = section.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        let draggedSpiceId = null;
+        
+        function dragStart(event, spiceId) {
+            draggedSpiceId = spiceId;
+            event.dataTransfer.effectAllowed = 'copy';
+            event.target.style.opacity = '0.5';
+        }
+        
+        function dragEnd(event) {
+            event.target.style.opacity = '1';
+            draggedSpiceId = null;
+        }
+        
+        function dragOver(event) {
+            event.preventDefault();
+            event.dataTransfer.dropEffect = 'copy';
+            const bowl = document.querySelector('.bowl-container');
+            bowl.style.borderColor = '#d4af37';
+            bowl.style.borderWidth = '3px';
+        }
+        
+        function dragLeave(event) {
+            const bowl = document.querySelector('.bowl-container');
+            bowl.style.borderColor = 'transparent';
+        }
+        
+        function drop(event) {
+            event.preventDefault();
+            const bowl = document.querySelector('.bowl-container');
+            bowl.style.borderColor = 'transparent';
+            
+            if (draggedSpiceId) {
+                const spice = spices.find(s => s.id === draggedSpiceId);
+                if (spice) {
+                    const input = document.getElementById('input-' + draggedSpiceId);
+                    const userAmount = parseFloat(input.value);
+                    const amount = userAmount && userAmount > 0 ? userAmount : getDefaultAmount(spice.amount);
+                    addToBowlDirect(spice.id, amount);
+                    showNotification(`✨ 已将 ${spice.name} ${amount}g 加入香碗`, 'success');
+                    input.value = '';
+                }
+            }
+            draggedSpiceId = null;
+        }
+        
+        function getDefaultAmount(amountStr) {
+            const match = amountStr.match(/(\d+)[gG]–(\d+)[gG]/);
+            if (match) {
+                const min = parseInt(match[1]);
+                const max = parseInt(match[2]);
+                return Math.round((min + max) / 2);
+            }
+            return 5;
+        }
+        
+        function addToBowlDirect(spiceId, amount) {
+            const spice = spices.find(s => s.id === spiceId);
+            if (!spice || amount <= 0) return;
+            
+            const existingIndex = bowl.findIndex(item => item.id === spiceId);
+            if (existingIndex >= 0) {
+                bowl[existingIndex].amount += amount;
+            } else {
+                bowl.push({ id: spice.id, name: spice.name, amount: amount });
+            }
+            totalWeight += amount;
+            updateBowl();
+            clearNotifications();
+        }
+        
+        let grindCount = 0;
+        let kneadCount = 0;
+        
+        function grindSpices() {
+            const pestle = document.getElementById('mortar-pestle');
+            
+            pestle.classList.add('grinding');
+            
+            setTimeout(() => {
+                pestle.classList.remove('grinding');
+                
+                document.getElementById('mortar-container').style.display = 'none';
+                document.getElementById('knead-container').style.display = 'block';
+                document.getElementById('step-1').classList.remove('active');
+                document.getElementById('step-2').classList.add('active');
+                grindCount = 0;
+            }, 800);
+        }
+        
+        function kneadDough() {
+            const dough = document.getElementById('dough');
+            
+            dough.classList.add('kneading');
+            
+            setTimeout(() => {
+                dough.classList.remove('kneading');
+                
+                document.getElementById('knead-container').style.display = 'none';
+                document.getElementById('press-container').style.display = 'block';
+                document.getElementById('step-2').classList.remove('active');
+                document.getElementById('step-3').classList.add('active');
+                updateMoldShape();
+                kneadCount = 0;
+            }, 800);
+        }
+        
+        function updateMoldShape() {
+            const shape = document.getElementById('mold-shape');
+            if (selectedMold === '圆形香丸') {
+                shape.style.borderRadius = '50%';
+            } else if (selectedMold === '花形香牌') {
+                shape.style.borderRadius = '0';
+                shape.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
+            } else if (selectedMold === '云纹香牌') {
+                shape.style.borderRadius = '8px';
+            }
+        }
+        
+        function pressMold() {
+            const press = document.getElementById('mold-press');
+            press.classList.add('pressing');
+            
+            setTimeout(() => {
+                press.classList.remove('pressing');
+                document.getElementById('press-container').style.display = 'none';
+                document.getElementById('dry-container').style.display = 'block';
+                document.getElementById('step-3').classList.remove('active');
+                document.getElementById('step-4').classList.add('active');
+                
+                setTimeout(() => {
+                    showResult();
+                }, 2500);
+            }, 500);
+        }
+        
+        function showResult() {
+            document.getElementById('process-section').style.display = 'none';
+            document.getElementById('result-section').style.display = 'block';
+            generateResult();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSpicesGrid('game-spices-grid');
+            
+            document.getElementById('spice-modal').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('spice-modal')) {
+                    closeModal();
+                }
+            });
+            
+            const bowl = document.querySelector('.bowl-container');
+            bowl.addEventListener('dragover', dragOver);
+            bowl.addEventListener('dragleave', dragLeave);
+            bowl.addEventListener('drop', drop);
+            
+            document.querySelectorAll('.spice-card').forEach(card => {
+                card.addEventListener('dragend', dragEnd);
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('#mortar-pestle')) {
+                    grindSpices();
+                }
+                if (e.target.closest('#dough')) {
+                    kneadDough();
+                }
+                if (e.target.closest('#mold-press')) {
+                    pressMold();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
